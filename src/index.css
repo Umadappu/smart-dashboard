@@ -1,0 +1,68 @@
+/* Base reset-ish */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+/* Theme tokens */
+:root {
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+
+  --primary: #2563eb;
+  --primary-contrast: #ffffff;
+
+  --sidebar-bg: #0b1220;
+  --sidebar-text: #cbd5e1;
+  --sidebar-active: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg: #0b1020;
+  --surface: #121a2b;
+  --text: #e5e7eb;
+  --muted: #a1a1aa;
+  --border: #1f2a44;
+
+  --primary: #60a5fa;
+  --primary-contrast: #0b1020;
+
+  --sidebar-bg: #0a0f1f;
+  --sidebar-text: #9aa4b2;
+  --sidebar-active: #ffffff;
+}
+
+body { background: var(--bg); color: var(--text); }
+
+/* Utility-ish */
+.container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+.button {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); cursor: pointer;
+}
+.button.primary { background: var(--primary); color: var(--primary-contrast); border-color: transparent; }
+.link { color: var(--primary); text-decoration: none; }
+.link.active { font-weight: 600; text-decoration: underline; }
+
+/* Layout */
+.layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100svh; }
+.app-header {
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; border-bottom: 1px solid var(--border); background: var(--surface);
+}
+.app-sidebar {
+  background: var(--sidebar-bg); color: var(--sidebar-text);
+  padding: 16px 12px; display: flex; flex-direction: column; gap: 6px;
+}
+.app-sidebar a {
+  color: inherit; text-decoration: none; padding: 10px 12px; border-radius: 8px; display: block;
+}
+.app-sidebar a.active, .app-sidebar a:hover { background: rgba(255,255,255,0.08); color: var(--sidebar-active); }
+.app-main { display: grid; grid-template-rows: 56px 1fr; }
+.app-content { padding: 16px; }
+
+/* Simple card */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
